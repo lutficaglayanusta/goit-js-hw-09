@@ -70,8 +70,8 @@ const images = [
 
 const list = document.querySelector(".gallery");
 
-images.forEach(({ preview, original, description }) => {
-  list.innerHTML += `<li class="gallery-item">
+const newImages = images.map(({preview,original,description}) =>
+  `<li class="gallery-item">
 	<a class="gallery-link" href="${original}">
 		<img 
 			class="gallery-image" 
@@ -81,10 +81,11 @@ images.forEach(({ preview, original, description }) => {
             height="200" 
 			/>
 	</a>
-</li>
+</li>`
+).join("")
 
-`;
-});
+list.insertAdjacentHTML("beforeend",newImages)
+
 
 let gallery = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
