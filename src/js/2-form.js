@@ -1,4 +1,5 @@
 const form = document.querySelector('.feedback-form');
+const formData = JSON.parse(localStorage.getItem('feedback-form-state')) || {};
 
 if (localStorage.getItem('feedback-form-state')) {
   form.elements.message.value =
@@ -8,8 +9,7 @@ if (localStorage.getItem('feedback-form-state')) {
 }
 
 form.addEventListener('input', function (e) {
-  const formData =
-    JSON.parse(localStorage.getItem('feedback-form-state')) || {};
+
 
   if (e.target.name === 'message') {
     formData.message = e.target.value;
@@ -26,7 +26,7 @@ form.addEventListener('submit', function (e) {
     e.target.elements.message.value === '' ||
     e.target.elements.email.value === ''
   ) {
-    alert('Please all field in the form');
+    alert('Please fiil in all fields');
   } else {
     console.log({
       message: e.target.elements.message.value,
