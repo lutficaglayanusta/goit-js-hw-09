@@ -33,6 +33,9 @@ form.addEventListener('submit', function (e) {
       email: e.target.elements.email.value,
     });
     localStorage.removeItem('feedback-form-state');
+    for (const key of Object.keys(formData)) {
+      formData[key] = ""
+    }
     form.reset();
   }
 });
